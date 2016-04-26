@@ -1,0 +1,7 @@
+.wrapper {
+    height: 100%;
+    min-height: 600px;
+}
+.content {
+    min-height: 600px;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modules Testing</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <div class="content container">
+            <section></section>
+        </div>
+        <footer id="footer">
+            <ul class="list-inline text-center"></ul>
+        </footer>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modules.js"></script>
+    <script>
+        $(function() {
+            //footer copyright
+            var footerCopy = '<p class="text-center">%data%</p>';
+
+            var owner = myModules.footerModule.showCopyowner("CuriouzMind Tech");
+            var copy = myModules.footerModule.showCopyright();
+
+            var fullCopyright = copy + owner;
+
+            var formattedCopy = footerCopy.replace("%data%", fullCopyright);
+
+            $('#footer').prepend(formattedCopy);
+
+            //footer socials
+            var socialsLink = '<li><a href="%url%">%data%</a></li>';
+
+            var socialText = myModules.footerModule.showSocials(function(text) {
+                return socialsLink.replace("%data%", text);
+            });
+
+            $('#footer ul').append(socialText("Facebook"));
+            $('#footer ul').append(socialText("Twitter"));
+            $('#footer ul').append(socialText("Instagram"));
+
+            //add new random method to footer module
+            var person1 = new Person("Bolaji");
+
+            var person = '<h3>%data%</h3>';
+            var personaction = person1.walk();
+
+            var personprint = person.replace("%data%", personaction);
+
+            $(".content section").append(personprint);
+        });
+    </script>
+</body>
+</html>
